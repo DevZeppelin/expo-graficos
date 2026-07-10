@@ -1,18 +1,22 @@
 import Image from "next/image";
+import ContactForm from "./components/ContactForm";
 import Countdown from "./components/Countdown";
 import Header from "./components/Header";
+import PlanoLightbox from "./components/PlanoLightbox";
 
 const WA_NUMBER = "5491165591521";
 const wa = (msg: string) =>
   `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 const WA_EXPOSITOR = wa(
-  "Hola, quiero recibir información para ser expositor en la Expo Gráficos & Afines 2027."
+  "Hola, quiero recibir información para ser expositor en la Expo Gráficos & Afines 2027.",
 );
 const WA_VISITANTE = wa(
-  "Hola, quiero preacreditarme como visitante de la Expo Gráficos & Afines 2027."
+  "Hola, quiero preacreditarme como visitante de la Expo Gráficos & Afines 2027.",
 );
-const WA_GENERAL = wa("Hola, quiero hacer una consulta sobre la Expo Gráficos & Afines 2027.");
+const WA_GENERAL = wa(
+  "Hola, quiero hacer una consulta sobre la Expo Gráficos & Afines 2027.",
+);
 
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Av.+Costanera+Rafael+Obligado+y+J.+Salguero+1221,+CABA";
@@ -20,15 +24,32 @@ const MAPS_URL =
 const rubros: { categoria: string; items: string[] }[] = [
   {
     categoria: "Impresión digital y gran formato",
-    items: ["Impresoras de gran formato", "Gráfica digital", "Plotters de corte", "Laminadoras"],
+    items: [
+      "Impresoras de gran formato",
+      "Gráfica digital",
+      "Plotters de corte",
+      "Laminadoras",
+    ],
   },
   {
     categoria: "Gráfica tradicional y offset",
-    items: ["Offset", "Flexografía", "Fotograbado", "Máquinas serigráficas e insumos"],
+    items: [
+      "Offset",
+      "Flexografía",
+      "Fotograbado",
+      "Máquinas serigráficas e insumos",
+    ],
   },
   {
     categoria: "Textil y estampado",
-    items: ["Impresión textil", "Sublimación", "Estampadoras", "Transfers", "Bordados", "Tampografía"],
+    items: [
+      "Impresión textil",
+      "Sublimación",
+      "Estampadoras",
+      "Transfers",
+      "Bordados",
+      "Tampografía",
+    ],
   },
   {
     categoria: "Impresión 3D",
@@ -50,30 +71,43 @@ const rubros: { categoria: string; items: string[] }[] = [
   },
   {
     categoria: "Comunicación visual y POP",
-    items: ["Insumos para comunicación visual", "Exhibidores POP", "Artículos promocionales"],
+    items: [
+      "Insumos para comunicación visual",
+      "Exhibidores POP",
+      "Artículos promocionales",
+    ],
   },
   {
     categoria: "Fotografía y software",
-    items: ["Fotografía digital", "Fotografía publicitaria", "Scanners", "Software"],
+    items: [
+      "Fotografía digital",
+      "Fotografía publicitaria",
+      "Scanners",
+      "Software",
+    ],
   },
 ];
 
 const visitantes = [
   {
     titulo: "Imprentas y empresas gráficas",
-    detalle: "Conocé en vivo equipos, insumos y tecnología para potenciar tu producción.",
+    detalle:
+      "Conocé en vivo equipos, insumos y tecnología para potenciar tu producción.",
   },
   {
     titulo: "Distribuidores y revendedores",
-    detalle: "Contacto directo con fabricantes e importadores de todo el sector.",
+    detalle:
+      "Contacto directo con fabricantes e importadores de todo el sector.",
   },
   {
     titulo: "Técnicos y profesionales",
-    detalle: "Demostraciones, novedades y capacitación sobre las últimas tendencias.",
+    detalle:
+      "Demostraciones, novedades y capacitación sobre las últimas tendencias.",
   },
   {
     titulo: "Diseñadores y futuros clientes",
-    detalle: "Descubrí materiales, soportes y soluciones para tus próximos proyectos.",
+    detalle:
+      "Descubrí materiales, soportes y soluciones para tus próximos proyectos.",
   },
 ];
 
@@ -91,7 +125,9 @@ function SectionTitle({
       <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand-bright">
         {kicker}
       </p>
-      <h2 className="mt-3 font-display text-3xl leading-tight sm:text-4xl">{title}</h2>
+      <h2 className="mt-3 font-display text-3xl leading-tight sm:text-4xl">
+        {title}
+      </h2>
       <div className="mt-4 h-1 w-16 bg-brand" />
     </div>
   );
@@ -104,10 +140,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section
-          id="inicio"
-          className="relative overflow-hidden pt-16"
-        >
+        <section id="inicio" className="relative overflow-hidden pt-16">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(220,38,38,0.18),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(220,38,38,0.10),transparent_50%)]"
@@ -134,7 +167,8 @@ export default function Home() {
                   21, 22 y 23 de octubre de 2027 · 13 a 20 hs
                 </p>
                 <p className="text-muted">
-                  Predio BA Ferial (ex Centro Costa Salguero) · Pabellón 5 · CABA
+                  Predio BA Ferial (ex Centro Costa Salguero) · Pabellón 5 ·
+                  CABA
                 </p>
               </div>
 
@@ -176,10 +210,16 @@ export default function Home() {
         </section>
 
         {/* Quiénes somos */}
-        <section id="quienes-somos" className="border-t border-line bg-surface/40">
+        <section
+          id="quienes-somos"
+          className="border-t border-line bg-surface/40"
+        >
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
             <div>
-              <SectionTitle kicker="Quiénes somos" title="Una expo con historia, pensada para hacer negocios" />
+              <SectionTitle
+                kicker="Quiénes somos"
+                title="Una expo con historia, pensada para hacer negocios"
+              />
               <div className="mt-6 space-y-4 text-muted">
                 <p>
                   La 1ª Exposición de Gráficos &amp; Afines nace para reunir en
@@ -274,10 +314,16 @@ export default function Home() {
         {/* Visitantes */}
         <section id="visitantes" className="border-t border-line bg-surface/40">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-            <SectionTitle kicker="Visitantes" title="¿Quiénes visitan la expo?" />
+            <SectionTitle
+              kicker="Visitantes"
+              title="¿Quiénes visitan la expo?"
+            />
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {visitantes.map((v, i) => (
-                <div key={v.titulo} className="rounded-2xl border border-line bg-background p-6">
+                <div
+                  key={v.titulo}
+                  className="rounded-2xl border border-line bg-background p-6"
+                >
                   <span className="font-display text-3xl text-brand-bright">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -308,21 +354,21 @@ export default function Home() {
         {/* Lugar y plano */}
         <section id="lugar" className="border-t border-line">
           <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-            <SectionTitle kicker="Lugar y plano" title="Predio BA Ferial · Pabellón 5" />
+            <SectionTitle
+              kicker="Lugar y plano"
+              title="Predio BA Ferial · Pabellón 5"
+            />
             <div className="mt-10 grid gap-10 lg:grid-cols-2">
-              <div>
-                <Image
-                  src="/mapa.jpeg"
-                  alt="Plano del Pabellón 5 del Predio BA Ferial"
-                  width={780}
-                  height={517}
-                  className="w-full rounded-2xl border border-line bg-white"
-                />
+              <div className="flex flex-col">
+                <span>
+                  <i>(Click para ampliar)</i>
+                </span>
+                <PlanoLightbox />
                 <a
                   href="/plano-expo.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-block rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-brand-bright hover:text-brand-bright"
+                  className="mt-5 inline-block self-start rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold transition-colors hover:border-brand-bright hover:text-brand-bright"
                 >
                   Descargar plano (PDF)
                 </a>
@@ -339,7 +385,9 @@ export default function Home() {
                   </div>
                   <div className="rounded-2xl border border-line bg-surface/60 p-6">
                     <p className="font-display text-3xl">3 días</p>
-                    <p className="mt-1 text-sm text-muted">21, 22 y 23 de octubre</p>
+                    <p className="mt-1 text-sm text-muted">
+                      21, 22 y 23 de octubre
+                    </p>
                   </div>
                   <div className="rounded-2xl border border-line bg-surface/60 p-6">
                     <p className="font-display text-3xl">13–20 hs</p>
@@ -380,17 +428,24 @@ export default function Home() {
               la oportunidad de formar parte del primer gran evento del mundo
               gráfico y afines.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <ContactForm />
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={WA_GENERAL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 font-semibold text-white transition-colors hover:bg-brand-bright"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-muted transition-colors hover:text-brand-bright"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden
+                >
                   <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.5c-.2.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4.1.2.1.7-.2 1.1Z" />
                 </svg>
-                WhatsApp 11 6559-1521
+                o escribinos directo: WhatsApp 11 6559-1521
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
@@ -414,11 +469,21 @@ export default function Home() {
             </p>
           </div>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
-            <a href="#quienes-somos" className="hover:text-foreground">Quiénes somos</a>
-            <a href="#expositores" className="hover:text-foreground">Expositores</a>
-            <a href="#visitantes" className="hover:text-foreground">Visitantes</a>
-            <a href="#lugar" className="hover:text-foreground">Lugar y plano</a>
-            <a href="#contacto" className="hover:text-foreground">Contacto</a>
+            <a href="#quienes-somos" className="hover:text-foreground">
+              Quiénes somos
+            </a>
+            <a href="#expositores" className="hover:text-foreground">
+              Expositores
+            </a>
+            <a href="#visitantes" className="hover:text-foreground">
+              Visitantes
+            </a>
+            <a href="#lugar" className="hover:text-foreground">
+              Lugar y plano
+            </a>
+            <a href="#contacto" className="hover:text-foreground">
+              Contacto
+            </a>
           </nav>
         </div>
         <div className="border-t border-line py-5 text-center text-xs text-muted">
